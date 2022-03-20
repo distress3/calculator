@@ -5,12 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calculator</title>
-    <link rel="stylesheet" href="./bulma.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <script src="./script.js" defer></script>
 </head>
 
 <body>
-    <section class="section">
+    <section class="section is-family-monospace">
         <div class="container">
             <div class="columns">
                 <div class="column">
@@ -19,7 +20,7 @@
                 <div class="column card has-background-grey-lighter">
                     <div class="columns">
                         <div class="column block">
-                            <input class="input " readonly></input>
+                            <div id="display" class="input has-text-right" readonly></div>
                         </div>
                     </div>
                     <div class="columns">
