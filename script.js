@@ -17,61 +17,61 @@ const equalsButton = document.getElementById('equals');
 const numbersDisplay = document.getElementById('display');
 
 zeroButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true){
+    if (checkForOperatorInDisplay === true) {
         numbersDisplay.innerText = '';
     }
     showOnDisplay('0')
 });
 oneButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true){
+    if (checkForOperatorInDisplay === true) {
         numbersDisplay.innerText = '';
     }
     showOnDisplay('1')
 });
 twoButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true){
+    if (checkForOperatorInDisplay === true) {
         numbersDisplay.innerText = '';
     }
     showOnDisplay('2')
 });
 threeButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true){
+    if (checkForOperatorInDisplay === true) {
         numbersDisplay.innerText = '';
     }
     showOnDisplay('3')
 });
 fourButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true){
+    if (checkForOperatorInDisplay === true) {
         numbersDisplay.innerText = '';
     }
     showOnDisplay('4')
 });
 fiveButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true){
+    if (checkForOperatorInDisplay === true) {
         numbersDisplay.innerText = '';
     }
     showOnDisplay('5')
 });
 sixButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true){
+    if (checkForOperatorInDisplay === true) {
         numbersDisplay.innerText = '';
     }
     showOnDisplay('6')
 });
 sevenButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true){
+    if (checkForOperatorInDisplay === true) {
         numbersDisplay.innerText = '';
     }
     showOnDisplay('7')
 });
 eightButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true){
+    if (checkForOperatorInDisplay === true) {
         numbersDisplay.innerText = '';
     }
     showOnDisplay('8')
 });
 nineButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true){
+    if (checkForOperatorInDisplay === true) {
         numbersDisplay.innerText = '';
     }
     showOnDisplay('9')
@@ -110,7 +110,7 @@ clearButton.addEventListener('click', () => {
     operatorUsed = null;
 });
 equalsButton.addEventListener('click', () => {
-    if (operatorAdded){
+    if (operatorAdded) {
         clearDisplay();
         let result = operator(operatorUsed, firstNumber, secondNumber);
         showOnDisplay(result);
@@ -118,35 +118,16 @@ equalsButton.addEventListener('click', () => {
 });
 
 function clearDisplay() {
-    //set value of variable storing digits to 0
-    operatorAdded = false;
     numbersDisplay.innerText = '';
 }
 
-function checkForOperatorInDisplay() {
-    let dis = numbersDisplay.innerText;
-    if (dis == '+' || dis == '-' || dis == '*' || dis == '/'){
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function showOnDisplay(str) {
-    if (operatorAdded === true && (str === '+' || str === '-' || str === '*' || str === '/')){
-        return;
-    }
-    numbersDisplay.innerText += str;
-};
-
-function storeNumber(){
-    if (firstNumber === null && parseInt(numbersDisplay.innerText) > 0){
-        let firstNumber = parseInt(numbersDisplay.innerText);
-        console.log(firstNumber);
-    } else if (firstNumber > null && parseInt(numbersDisplay.innerText) > 0) {
-        let secondNumber = parseInt(numbersDisplay.innerText);
-        console.log(secondNumber);
-    }
+function resetValues() {
+    operatorAdded = false;
+    operatorAdded = false
+    operatorUsed = null;
+    firstNumber = null;
+    secondNumber = null;
+    clearDisplay();
 }
 
 function add(x, y) {
