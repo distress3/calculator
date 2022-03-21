@@ -15,45 +15,36 @@ const divideButton = document.getElementById('divide');
 const clearButton = document.getElementById('clear');
 const equalsButton = document.getElementById('equals');
 const numbersDisplay = document.getElementById('display');
+const operatorArray = ['+', '-', '/', '*'];
 
 zeroButton.addEventListener('click', () => {
-    if (operatorAdded) clearDisplay();
     showOnDisplay('0')
 });
 oneButton.addEventListener('click', () => {
-    if (operatorAdded) clearDisplay();
     showOnDisplay('1')
 });
 twoButton.addEventListener('click', () => {
-    if (operatorAdded) clearDisplay();
     showOnDisplay('2')
 });
 threeButton.addEventListener('click', () => {
-    if (operatorAdded) clearDisplay();
     showOnDisplay('3')
 });
 fourButton.addEventListener('click', () => {
-    if (operatorAdded) clearDisplay();
     showOnDisplay('4')
 });
 fiveButton.addEventListener('click', () => {
-    if (operatorAdded) clearDisplay();
     showOnDisplay('5')
 });
 sixButton.addEventListener('click', () => {
-    if (operatorAdded) clearDisplay();
     showOnDisplay('6')
 });
 sevenButton.addEventListener('click', () => {
-    if (operatorAdded) clearDisplay();
     showOnDisplay('7')
 });
 eightButton.addEventListener('click', () => {
-    if (operatorAdded) clearDisplay();
     showOnDisplay('8')
 });
 nineButton.addEventListener('click', () => {
-    if (operatorAdded) clearDisplay();
     showOnDisplay('9')
 });
 addButton.addEventListener('click', () => {
@@ -99,6 +90,11 @@ function showOnDisplay(number) {
     if (numbersDisplay.innerText === '0' || shouldResetDisplay){
         clearDisplay();
     }
+    operatorArray.forEach((e) => {
+        if (numbersDisplay.innerText === e){
+            clearDisplay();
+        }
+    })
     numbersDisplay.innerText += number;
 }
 
