@@ -17,33 +17,43 @@ const equalsButton = document.getElementById('equals');
 const numbersDisplay = document.getElementById('display');
 
 zeroButton.addEventListener('click', () => {
+    if (operatorAdded) clearDisplay();
     showOnDisplay('0')
 });
 oneButton.addEventListener('click', () => {
+    if (operatorAdded) clearDisplay();
     showOnDisplay('1')
 });
 twoButton.addEventListener('click', () => {
+    if (operatorAdded) clearDisplay();
     showOnDisplay('2')
 });
 threeButton.addEventListener('click', () => {
+    if (operatorAdded) clearDisplay();
     showOnDisplay('3')
 });
 fourButton.addEventListener('click', () => {
+    if (operatorAdded) clearDisplay();
     showOnDisplay('4')
 });
 fiveButton.addEventListener('click', () => {
+    if (operatorAdded) clearDisplay();
     showOnDisplay('5')
 });
 sixButton.addEventListener('click', () => {
+    if (operatorAdded) clearDisplay();
     showOnDisplay('6')
 });
 sevenButton.addEventListener('click', () => {
+    if (operatorAdded) clearDisplay();
     showOnDisplay('7')
 });
 eightButton.addEventListener('click', () => {
+    if (operatorAdded) clearDisplay();
     showOnDisplay('8')
 });
 nineButton.addEventListener('click', () => {
+    if (operatorAdded) clearDisplay();
     showOnDisplay('9')
 });
 addButton.addEventListener('click', () => {
@@ -67,11 +77,7 @@ clearButton.addEventListener('click', () => {
     resetValues();
 });
 equalsButton.addEventListener('click', () => {
-    if (operatorAdded) {
-        clearDisplay();
-        let result = operator(operatorUsed, firstNumber, secondNumber);
-        showOnDisplay(result);
-    };
+    preCalculation();
 });
 
 function clearDisplay() {
@@ -98,7 +104,7 @@ function showOnDisplay(number) {
 
 function setOperation(operator) {
     if (operatorUsed !== null) preCalculation()
-    firstNumber = numbersDisplay.innerText;
+    firstNumber = parseInt(numbersDisplay.innerText);
     operatorAdded = true;
     operatorUsed = operator;
     shouldResetDisplay = true;
@@ -110,7 +116,8 @@ function preCalculation( ) {
         alert('Please don\'t try to divide by zero.')
         return;
     }
-    secondNumber = numbersDisplay.textContent;
+    secondNumber = parseInt(numbersDisplay.textContent);
+
     //insert function for rounding the result here
     numbersDisplay.innerText = operator(operatorUsed, firstNumber, secondNumber);
 }
