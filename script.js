@@ -17,97 +17,54 @@ const equalsButton = document.getElementById('equals');
 const numbersDisplay = document.getElementById('display');
 
 zeroButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true) {
-        numbersDisplay.innerText = '';
-    }
     showOnDisplay('0')
 });
 oneButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true) {
-        numbersDisplay.innerText = '';
-    }
     showOnDisplay('1')
 });
 twoButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true) {
-        numbersDisplay.innerText = '';
-    }
     showOnDisplay('2')
 });
 threeButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true) {
-        numbersDisplay.innerText = '';
-    }
     showOnDisplay('3')
 });
 fourButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true) {
-        numbersDisplay.innerText = '';
-    }
     showOnDisplay('4')
 });
 fiveButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true) {
-        numbersDisplay.innerText = '';
-    }
     showOnDisplay('5')
 });
 sixButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true) {
-        numbersDisplay.innerText = '';
-    }
     showOnDisplay('6')
 });
 sevenButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true) {
-        numbersDisplay.innerText = '';
-    }
     showOnDisplay('7')
 });
 eightButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true) {
-        numbersDisplay.innerText = '';
-    }
     showOnDisplay('8')
 });
 nineButton.addEventListener('click', () => {
-    if (checkForOperatorInDisplay === true) {
-        numbersDisplay.innerText = '';
-    }
     showOnDisplay('9')
 });
 addButton.addEventListener('click', () => {
-    storeNumber();
-    numbersDisplay.innerText = '';
+    setOperation('+')
     showOnDisplay('+')
-    operatorAdded = true;
-    operatorUsed = '+';
 });
 subtractButton.addEventListener('click', () => {
-    storeNumber();
-    numbersDisplay.innerText = '';
+    setOperation('-')
     showOnDisplay('-')
-    operatorAdded = true;
-    operatorUsed = '-';
 });
 multiplyButton.addEventListener('click', () => {
-    storeNumber();
-    numbersDisplay.innerText = '';
+    setOperation('*')
     showOnDisplay('*')
-    operatorAdded = true;
-    operatorUsed = '*';
 });
 divideButton.addEventListener('click', () => {
-    storeNumber();
-    numbersDisplay.innerText = '';
+    setOperation('/')
     showOnDisplay('/')
-    operatorAdded = true;
-    operatorUsed = '/';
 });
 clearButton.addEventListener('click', () => {
     clearDisplay();
-    operatorAdded = false;
-    operatorUsed = null;
+    resetValues();
 });
 equalsButton.addEventListener('click', () => {
     if (operatorAdded) {
@@ -119,6 +76,7 @@ equalsButton.addEventListener('click', () => {
 
 function clearDisplay() {
     numbersDisplay.innerText = '';
+    shouldResetDisplay = false;
 }
 
 function resetValues() {
@@ -129,6 +87,35 @@ function resetValues() {
     secondNumber = null;
     clearDisplay();
 }
+
+function showOnDisplay(number) {
+    console.log(shouldResetDisplay)
+    if (numbersDisplay.innerText === '0' || shouldResetDisplay){
+        clearDisplay();
+    }
+    numbersDisplay.innerText += number;
+}
+
+function setOperation(operator) {
+    if (operatorUsed !== null) preCalculation()
+    firstNumber = numbersDisplay.innerText;
+    operatorAdded = true;
+    operatorUsed = operator;
+    shouldResetDisplay = true;
+}
+
+function preCalculation( ) {
+    if (operatorUsed === null || shouldResetDisplay) return;
+    if (operatorUsed === '/' && numbersDisplay.innerText === '0') {
+        alert('Please don\'t try to divide by zero.')
+        return;
+    }
+    secondNumber = numbersDisplay.textContent;
+    //insert function for rounding the result here
+    numbersDisplay.innerText = operator(operatorUsed, firstNumber, secondNumber);
+}
+
+
 
 function add(x, y) {
     return x + y;
@@ -147,6 +134,7 @@ function divide(x, y) {
 }
 
 function operator(operator, x, y) {
+    console.log(arguments)
     switch (operator) {
         case ('+'):
             return add(x, y);
@@ -162,6 +150,7 @@ function operator(operator, x, y) {
 
 let operatorAdded = false
 let operatorUsed = null;
+let shouldResetDisplay = false;
 let firstNumber = null;
 let secondNumber = null;
 //test
